@@ -1,42 +1,55 @@
 import ScrollReveal from 'scrollreveal'
 
 export default function initScrollReveal(defaultProps = null) {
+    // Default properties for all animations
+    const defaultOptions = {
+        duration: 1000,
+        distance: '50px',
+        opacity: 0,
+        easing: 'ease-in-out',
+        reset: false
+    };
+
     const targetElements = [
         {
             element: ".banner-text",
-            animation: {
-                delay: 700,
+            options: {
+                delay: 300,
                 origin: window.innerWidth > 768 ? "left" : "bottom",
+                distance: window.innerWidth > 768 ? "100px" : "50px",
             },
         },
         {
-            element: ".banner-cta",
-            animation: {
-                delay: 1000,
+            element: ".banner-cta", 
+            options: {
+                delay: 600,
                 origin: window.innerWidth > 768 ? "left" : "bottom",
+                distance: window.innerWidth > 768 ? "100px" : "50px",
             },
         },
         {
             element: ".section-title",
-            animation: {
-                delay: 300,
-                distance: "0px",
+            options: {
+                delay: 200,
+                distance: "30px",
                 origin: "bottom",
             },
         },
         {
             element: ".section-content",
-            animation: {
-                delay: 500,
-                distance: "0px",
+            options: {
+                delay: 400,
+                distance: "30px", 
                 origin: "bottom",
             },
         },
     ];
     
-    ScrollReveal({ reset: false });
+    // Initialize ScrollReveal with default options
+    const sr = ScrollReveal(defaultOptions);
     
-    targetElements.forEach(({ element, animation }) => {
-        ScrollReveal().reveal(element, Object.assign({}, defaultProps, animation));
+    // Apply reveal to each element
+    targetElements.forEach(({ element, options }) => {
+        sr.reveal(element, Object.assign({}, defaultOptions, options));
     });
 }
