@@ -1,43 +1,250 @@
-<!DOCTYPE html>
-<html>
-
+﻿<!DOCTYPE html>
+<html lang="en" class="font-sans scroll-smooth">
 <head>
-  <title>My Site</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Phuong Nam | Web Designer & Software Engineer">
+  <meta name="description" content="Hi, I'm Phuong Nam, a Web Designer and Software Engineering student. Explore my portfolio and web development projects.">
+  <meta name="keywords" content="Phuong Nam, Portfolio, Web Design, Software Engineering, FPT University, Frontend Developer">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <title>Phuong Nam | Web Designer & Software Engineer</title>
+  
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body,
-    h1 {
-      font-family: "Raleway", sans-serif
+    :root {
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    body,
-    html {
-      height: 100%
+    /* Định nghĩa các Animation nghệ thuật */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .bgimg {
-      background-image: url(https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-      min-height: 100%;
-      background-position: center;
-      background-size: cover;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-fade-up { animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    .animate-pop { animation: pop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    /* Hiệu ứng Spotlight theo chuột */
+    .spotlight {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle 400px at var(--x) var(--y), rgba(45, 212, 191, 0.05), transparent 80%);
+      z-index: 1;
+    }
+
+    /* Social media hover animations */
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #64748b;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link:hover {
+      border-color: #2dd4bf;
+      color: #2dd4bf;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(45, 212, 191, 0.3);
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(45, 212, 191, 0.1) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .social-link:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      z-index: 1;
     }
   </style>
 </head>
+<body class="bg-slate-950 text-white selection:bg-teal-400 selection:text-slate-900">
+  
+  <div class="spotlight" id="spotlight"></div>
 
-<body>
-  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-    <div class="w3-display-topleft w3-padding-large w3-xlarge">
-      Logo
+  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-20">
+      <a href="#home" class="text-xl font-extrabold tracking-[0.3em] text-teal-400 hover:text-white transition-colors">PHUONG NAM</a>
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.3em] text-slate-400">
+        <a href="#home" class="transition hover:text-teal-400">Home</a>
+        <a href="#about" class="transition hover:text-teal-400">About</a>
+        <a href="#contact" class="transition hover:text-teal-400">Contact</a>
+      </nav>
+      <button class="md:hidden p-2 text-slate-300" aria-label="Open menu">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
     </div>
-    <div class="w3-display-middle">
-      <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
-      <hr class="w3-border-grey" style="margin:auto;width:40%"> 
-      <p class="w3-large w3-center">10 days left</p>
+  </header>
+
+  <main class="relative z-10">
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(15,23,42,1)_0%,_rgba(2,6,23,1)_100%)]"></div>
       
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 py-32 w-full">
+        <div class="text-center lg:text-left animate-fade-up">
+          <p class="text-sm uppercase tracking-[0.5em] text-teal-400 mb-8 opacity-80">Designer · Developer · Creator</p>
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-white leading-[1.1] mb-8">
+            I’m <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Phuong Nam</span>,<br>building digital art.
+          </h1>
+          <p class="text-lg md:text-xl max-w-2xl text-slate-400 mb-12 leading-relaxed">
+            Nâng tầm ý tưởng thành trải nghiệm số mượt mà, chuyên nghiệp và đậm chất riêng.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
+            <a href="#about" class="px-10 py-4 bg-teal-400 text-slate-950 font-bold uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(45,212,191,0.3)]">About Me</a>
+            <a href="#contact" class="px-10 py-4 border border-slate-700 text-white font-bold uppercase tracking-widest rounded-full hover:bg-slate-800 transition-all">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 text-center animate-float" style="animation-delay: 0s;">
+                <h3 class="text-4xl font-bold text-teal-400">10+</h3>
+                <p class="text-xs uppercase tracking-widest mt-2 text-slate-500">Projects Done</p>
+            </div>
+            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 text-center animate-float" style="animation-delay: 0.5s;">
+                <h3 class="text-4xl font-bold text-teal-400">FPTU</h3>
+                <p class="text-xs uppercase tracking-widest mt-2 text-slate-500">Software Engineering</p>
+            </div>
+            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 text-center animate-float" style="animation-delay: 1s;">
+                <h3 class="text-4xl font-bold text-teal-400">UI/UX</h3>
+                <p class="text-xs uppercase tracking-widest mt-2 text-slate-500">Design Focus</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- About Content -->
+                <div class="space-y-8">
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">About Me</h2>
+                    
+                    <div class="space-y-6 text-slate-300 leading-relaxed">
+                        <p class="text-lg">
+                            I'm a passionate web designer and developer with a keen eye for creating beautiful, functional digital experiences. I specialize in crafting modern, responsive websites that not only look stunning but also deliver exceptional user experiences.
+                        </p>
+                        
+                        <p>
+                            With a strong foundation in both design principles and cutting-edge web technologies, I bring ideas to life through clean code, intuitive interfaces, and thoughtful user interactions. My approach combines creativity with technical expertise to deliver solutions that exceed expectations.
+                        </p>
+                        
+                        <p>
+                            I believe in the power of design to transform businesses and connect people with meaningful digital experiences. Every project is an opportunity to push boundaries and create something truly special.
+                        </p>
+                    </div>
+                    
+                    <!-- Skills Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <h4 class="text-teal-400 font-semibold mb-2">Frontend</h4>
+                            <p class="text-sm text-slate-400">HTML, CSS, JavaScript, React</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <h4 class="text-teal-400 font-semibold mb-2">Design</h4>
+                            <p class="text-sm text-slate-400">UI/UX, Figma, Adobe Creative Suite</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <h4 class="text-teal-400 font-semibold mb-2">Backend</h4>
+                            <p class="text-sm text-slate-400">Node.js, PHP, Python</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <h4 class="text-teal-400 font-semibold mb-2">Tools</h4>
+                            <p class="text-sm text-slate-400">Git, VS Code, Tailwind CSS</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Image -->
+                <div class="relative">
+                    <div class="aspect-square bg-gradient-to-br from-teal-400/20 to-blue-500/20 rounded-3xl border border-white/10 overflow-hidden">
+                        <img src="/images/nam.jpg" alt="Phuong Nam" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/80 to-transparent p-6">
+                            <p class="text-white text-sm font-medium text-center">Web Designer & Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <footer class="py-12 border-t border-slate-900 text-center text-slate-500 text-sm tracking-widest">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Social Media Links -->
+      <div class="flex justify-center items-center gap-4 mb-8">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+          <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+        </a>
+        
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+          <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Copyright -->
+      <p>© 2026 PHUONG NAM. ALL RIGHTS RESERVED.</p>
     </div>
-  </div>
+  </footer>
+
+  <script>
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', e => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    });
+  </script>
 </body>
 </html>
