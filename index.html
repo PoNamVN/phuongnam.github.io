@@ -86,11 +86,13 @@
     /* Hiệu ứng Spotlight theo chuột */
     .spotlight {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       background: radial-gradient(circle 400px at var(--x) var(--y), rgba(45, 212, 191, 0.05), transparent 80%);
-      z-index: 1;
+      z-index: 0;
     }
 
     /* Social media hover animations */
@@ -158,22 +160,24 @@
   </header>
 
   <main class="relative z-10">
-    <section id="home" class="min-h-screen flex items-center relative overflow-hidden" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(15,23,42,1)_0%,_rgba(2,6,23,1)_100%)]" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); z-index: -1;"></div>
+    <section id="home" class="relative isolate min-h-screen flex items-center overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(15,23,42,1)_0%,_rgba(2,6,23,1)_100%)]"></div>
       
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 py-32 w-full" style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem 8rem 1.5rem; width: 100%;">
-        <div class="text-center lg:text-left" style="text-align: center; color: white;">
-          <p style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5em; color: #2dd4bf; margin-bottom: 2rem; opacity: 1;">Designer · Developer · Creator</p>
-          <h1 style="font-size: 3rem; font-weight: 800; color: white; line-height: 1.1; margin-bottom: 2rem; opacity: 1;">
-            I'm <span style="color: #2dd4bf;">Phuong Nam</span><br>building digital art.
+      <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 py-32 w-full">
+        <div class="text-center lg:text-left text-white">
+          <p class="text-sm uppercase tracking-[0.5em] text-teal-400 mb-8">
+            Designer · Developer · Creator
+          </p>
+          <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+            I'm <span class="text-teal-400">Phuong Nam</span><br>building digital art.
           </h1>
-          <p style="font-size: 1.125rem; color: #94a3b8; margin-bottom: 3rem; line-height: 1.6; opacity: 1;">
+          <p class="text-lg text-slate-400 mb-12 max-w-2xl">
             Nâng tầm ý tưởng thành trải nghiệm số mượt mà, chuyên nghiệp và đậm chất riêng.
           </p>
           
-          <div style="display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; align-items: center;">
-            <a href="#about" style="padding: 1rem 2.5rem; background-color: #2dd4bf; color: #020617; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 9999px; text-decoration: none; display: inline-block;">About Me</a>
-            <a href="#contact" style="padding: 1rem 2.5rem; border: 1px solid #334155; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 9999px; text-decoration: none; display: inline-block;">Get in touch</a>
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
+            <a href="#about" class="px-10 py-4 bg-teal-400 text-slate-950 font-bold uppercase tracking-widest rounded-full hover:bg-white hover:scale-105 transition-all duration-300">About Me</a>
+            <a href="#contact" class="px-10 py-4 border border-slate-700 text-white font-bold uppercase tracking-widest rounded-full hover:bg-slate-800 transition-all">Get in touch</a>
           </div>
         </div>
       </div>
